@@ -144,11 +144,12 @@
             adresses.initialize();
             
             // Instantiate the typeahead UI
-            $('#remote .typeahead').typeahead(null,
-                {
+            $('#remote .typeahead').typeahead({
                     minLength: 3,
                     highlight: true,
-                    hint: false,
+                    hint: true,
+                },
+                {
                     displayKey: 'libelle',
                     name: 'adresses',
                     source: adresses.ttAdapter(),
@@ -159,7 +160,7 @@
                             '</div>'
                         ].join('\n'),
                         suggestion: Handlebars.compile('{{#ifUnwantedType type}}<p>{{#ifLogoType type}}'+
-                        '<img src="icons/{{type}}.png">{{/ifLogoType}}<strong>{{libelle}}</strong>, {{ville}}, {{type}}</p>{{/ifUnwantedType}}')
+                        '<img src="icons/{{type}}.png">{{/ifLogoType}}<strong>{{libelle}}</strong>, {{type}}</p>{{/ifUnwantedType}}')
                         
                     }
                 });
@@ -176,9 +177,5 @@
             });
 
          </script>
-        
-        
-        
-        
     </body>
 </html>
